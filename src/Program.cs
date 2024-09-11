@@ -237,7 +237,7 @@ namespace dnmps {
                     string cmd = System.Text.Encoding.Default.GetString(data).Replace("\0", "").Trim();
                     Log($"Data received: {cmd} -- Handling...");
                     string response = ExecuteCommand(cmd);
-                    Log($"Response: {response}");
+                    // Log($"Response: {response}");
                     SendDataToClient(response);
                 } catch {
                     Log("Client disconnected");
