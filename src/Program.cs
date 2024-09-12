@@ -114,6 +114,7 @@ namespace dnmps {
             }
             this.Loading = false;
             this.SetVolume(this.lastVolume);
+            File.WriteAllText("/tmp/dnmps_current_song", GetCurrentSong());
             return true;
         }
 

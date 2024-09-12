@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 echo "Installing dependencies"
-    
+
 cp ./lib/libbass.so /usr/lib/
 
 if command -v mono &> /dev/null
