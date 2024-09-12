@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dnmps")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6f87b19cf250451cfe9f28f3506c86fd0317dac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa4cdf5fa3319bd58727acb1221b27d41473f478")]
 [assembly: System.Reflection.AssemblyProductAttribute("dnmps")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dnmps")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
