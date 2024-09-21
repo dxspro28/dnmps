@@ -1,3 +1,4 @@
 ./bin
 ./commit_and_push.sh
-./obj
+obj/
+obj/Debug/net8.0/dnmps.AssemblyInfo.cs

@@ -115,6 +115,7 @@ namespace dnmps {
             this.Loading = false;
             this.SetVolume(this.lastVolume);
             File.WriteAllText("/tmp/dnmps_current_song", GetCurrentSong());
+            File.WriteAllText("/tmp/dnmps_state", "playing");
             return true;
         }
 
@@ -124,10 +125,12 @@ namespace dnmps {
 
         public void Pause() {
             if(this.IsPlaying()) Bass.BASS_ChannelPause(this.handle);
+            File.WriteAllText("/tmp/dnmps_state", "paused");
         }
 
         public void Resume() {
             if(this.IsPaused()) Bass.BASS_ChannelPlay(this.handle, false);
+            File.WriteAllText("/tmp/dnmps_state", "playing");
         }
 
         public bool IsPaused() {
@@ -313,9 +316,25 @@ namespace dnmps {
     }
 
     public static class Program {
+
+        public static void FileCommunicationSupport(MPServer server) {
+            if(Directory.Exists("/tmp/dnmps_file_com")) {
+                Directory.Delete("/tmp/dnmps_file_com", true);
+            }
+            Directory.CreateDirectory("/tmp/dnmps_file_com");
+            FileSystemWatcher watcher = new FileSystemWatcher("/tmp/dnmps_file_com");
+            watcher.Created += (sender, args) => {
+                var text = File.ReadAllText(args.FullPath).Trim();
+                File.Delete(args.FullPath);
+                server.ExecuteCommand(text);
+            };
+            watcher.EnableRaisingEvents = true;
+        }
+
         public static void Main(string[] args) {
             MPServer server = new MPServer("127.0.0.1", 2806);
             Console.WriteLine("Server listening");
+            FileCommunicationSupport(server);
             server.Listen();
         }
     }

@@ -1,6 +1,6 @@
 build:
 	@echo Building...
-	@mkdir bin
+	# @mkdir bin
 	@mcs src/Program.cs -out:bin/dnmps -unsafe
 
 install:
